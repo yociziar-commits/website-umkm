@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Produk - Flower Shop</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <h1>Flower Premium</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="produk.html">Produk</a></li>
+        <li><a href="galeri.html">Galeri</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </nav>
+
+    <section class="produk">
+      <div class="card">
+        <img src="c:\Users\HP\Documents\flower.shop\foto bunga\img1.jpg" />
+        <h3>Buket Mawar</h3>
+        <p>Rp100.000</p>
+        <button onclick="beli('Buket Mawar', 100000)">Beli</button>
+      </div>
+
+      <div class="card">
+        <img src="c:\Users\HP\Documents\flower.shop\foto bunga\img6.jpg" />
+        <h3>Buket Mawar</h3>
+        <p>Rp50.000</p>
+        <button onclick="beli('Buket Mawar Premium', 150000)">Beli</button>
+      </div>
+
+      <div class="card">
+        <img src="c:\Users\HP\Documents\flower.shop\foto bunga\img3.jpg" />
+        <h3>Buket Uang</h3>
+        <p>Rp800.000</p>
+        <button onclick="beli('Buket Uang', 800000)">Beli</button>
+      </div>
+    </section>
+
+    <!-- KOTAK PESAN -->
+    <div class="keranjang">
+      <h2>Pesanan Anda</h2>
+      <p id="produkDipilih">Belum ada pesanan</p>
+
+      <label>Jumlah</label>
+      <input type="number" id="jumlah" value="1" min="1" />
+
+      <button onclick="kirimWA()">Pesan via WhatsApp</button>
+    </div>
+
+    <script>
+      let namaProduk = "";
+      let hargaProduk = 0;
+
+      function beli(nama, harga) {
+        namaProduk = nama;
+        hargaProduk = harga;
+        document.getElementById("produkDipilih").innerText =
+          nama + " - Rp" + harga.toLocaleString();
+      }
+
+      function kirimWA() {
+        let jumlah = document.getElementById("jumlah").value;
+        let total = hargaProduk * jumlah;
+
+        let pesan =
+          `Halo, saya ingin memesan:%0A` +
+          `Produk: ${namaProduk}%0A` +
+          `Jumlah: ${jumlah}%0A` +
+          `Total: Rp${total.toLocaleString()}`;
+
+        let nomorWA = "087766507242"; // GANTI nomor WA kamu
+        window.open(`https://wa.me/${nomorWA}?text=${pesan}`, "_blank");
+      }
+    </script>
+  </body>
+</html>
